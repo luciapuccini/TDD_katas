@@ -1,7 +1,9 @@
+//arrange
 const functions = require("./functions");
 
 test("Adds 2+2 = 4", () => {
-    expect(functions.add(2, 2)).toBe(4);
+    const rta = functions.add(2, 2) //act
+    expect(rta).toBe(4); //assert
 });
 
 test("Adds 2+2 to not equal 5", () => {
