@@ -6,7 +6,9 @@
  * 2)Allow the Add method to handle an unknown amount of numbers
  * 3)Allow the Add method to handle new lines between numbers (“1\n2,3”).
  * 4)Support different delimiters “//[delimiter]\n[numbers…]” for example “//;\n1;2” 
- * 5)Calling Add with a negative number will throw an exception “negatives not allowed” - and the negative that was passed.if there are multiple negatives, show all of them in the exception message
+ * 5)Calling Add with a negative number will throw an exception “negatives not allowed” -
+ *  and the negative that was passed.
+ * if there are multiple negatives, show all
  * 
  * 6)Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
  * 7)Delimiters can be of any length with the following format:  “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6
@@ -32,3 +34,19 @@ test("one number", () => {
 test("2 numbers", () => {
     expect(SC.add("1,2")).toBe(3)
 });
+test("unknown amount of numbers", () => {
+    expect(SC.add("1,2,1")).toBe(4)
+});
+test("handles new line and replaces it by comma", () => {
+    expect(SC.add("1,2\n1")).toBe(4)
+});
+test("handles diffrent delimiters", () => {
+    expect(SC.add('//;\n1;2')).toBe(3)
+});
+
+test("error para numeros negativos", () => {
+    function necesaria() {
+        return 'error numeros negativos'
+    }
+    expect(SC.add('//;\n1;-2')).toThrowError(necesaria)
+})
