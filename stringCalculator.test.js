@@ -45,8 +45,8 @@ test("handles diffrent delimiters", () => {
 });
 
 test("error para numeros negativos", () => {
-    function necesaria() {
-        return 'error numeros negativos'
-    }
-    expect(SC.add('//;\n1;-2')).toThrowError(necesaria)
+   
+    expect(()=>{
+            SC.add('1,-2');
+            }).toThrow();
 })

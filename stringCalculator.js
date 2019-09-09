@@ -2,24 +2,27 @@ const stringCalculator = {
     add: (cadena) => {
         if (cadena === "") {
             return 0
-        } else if (cadena.includes("//")) {
+        }
+        else if (cadena.includes("-")) {
+            throw new NegativesError('Negatives')
+        }
+         else if (cadena.includes("//")) {
             var delimitador = cadena[2];
             cadena = cadena.slice(3)
-
             cadena = stringCalculator.validarSaltos(cadena, delimitador)
             cadena = stringCalculator.validarInicioCadena(cadena, delimitador)
             numeros = cadena.split(delimitador)
-            numeros = stringCalculator.negativosError(numeros)
             return stringCalculator.sumarNumeros(numeros)
 
-        } else if (cadena.includes(",")) {
-
+        } 
+        else if (cadena.includes(",")) {
             cadena = stringCalculator.validarSaltos(cadena, ",")
             cadena = stringCalculator.validarInicioCadena(cadena, ",")
-            numeros = cadena.split(",")
-            numeros = stringCalculator.negativosError(numeros)
+            numeros = cadena.split(",") 
             return stringCalculator.sumarNumeros(numeros)
-        } else {
+        } 
+    
+        else {
             return parseInt(cadena)
         }
 
@@ -46,7 +49,7 @@ const stringCalculator = {
         return cadena
     },
     negativosError: (numeros) => {
-        if (numeros.filter(value => value < 0) > 0) {
+        if ( (numeros.filter(value=> parseInt(value) < 0) !== [] ) ) {
             throw 'error numeros negativos'
         } else {
             return numeros
