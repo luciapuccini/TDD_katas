@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/luciapuccini/TDD_katas#readme",
   "devDependencies": {
-    "jest": "^23.5.0"
+    "jest": "^29.3.1"
   },
   "dependencies": {
     "axios": "^0.18.0"
